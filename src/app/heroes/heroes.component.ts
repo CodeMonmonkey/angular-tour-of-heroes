@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Hero } from '../hero'
 import { HeroService } from '../hero.service';
-import { MessageService } from '../message.service'
 
 @Component({
   selector: 'app-heroes',
@@ -15,7 +14,6 @@ export class HeroesComponent implements OnInit {
 
   constructor(
     private heroService: HeroService,
-    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -24,6 +22,19 @@ export class HeroesComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes().subscribe(re => this.heroes = re);
+  }
+
+  add(name: string): void {
+    name = name.trim();
+    if(!name) { return; }
+    this.heroService.addHero({name} as Hero).subscribe(
+      re => { this.heroes.push(re)}
+    );
+  }
+
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter( h => h !== hero);//先将本地列表删除该项
+    this.heroService.deleteHero(hero).subscribe();
   }
 
 }

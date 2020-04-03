@@ -40,4 +40,13 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();//利用Location 服务在浏览器的历史栈中后退一步。
   }
 
+  /**
+   * 修改英雄名后保存
+   */
+  save(): void {
+    this.heroService.updateHero(this.hero).subscribe(
+      () => this.goBack()
+    );
+  }
+
 }
