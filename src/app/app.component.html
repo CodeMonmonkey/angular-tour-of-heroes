@@ -1,8 +1,9 @@
 <h1>{{title}}</h1>
 <!-- routerLink表示此链接指向的位置，具体该链接对应的component在路由中定义 -->
 <nav>
-  <a routerLink="/heroes">Heroes</a><br>
+  <a routerLink="/heroes">Heroes</a>
   <a routerLink="/dashboard">Dashboard</a>
+  <app-hero-search></app-hero-search>
 </nav>
 <router-outlet></router-outlet>
 <app-messages></app-messages>
