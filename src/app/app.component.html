@@ -3,7 +3,8 @@
 <nav>
   <a routerLink="/heroes">Heroes</a>
   <a routerLink="/dashboard">Dashboard</a>
-  <app-hero-search></app-hero-search>
 </nav>
+<!-- 搜索框放在被动态加载的子组件中才行，不能放在主页面。这样才是合理的。原理待验证 -->
+<!-- <app-hero-search></app-hero-search> -->
 <router-outlet></router-outlet>
 <app-messages></app-messages>
